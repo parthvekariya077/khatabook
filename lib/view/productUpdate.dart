@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:khatabook/controller/homeController.dart';
 import 'package:khatabook/view/db.dart';
@@ -13,7 +12,6 @@ class ProductUpate extends StatefulWidget {
 }
 
 class _ProductUpateState extends State<ProductUpate> {
-
   TextEditingController txtdate = TextEditingController();
   TextEditingController txttime = TextEditingController();
   TextEditingController txtprice = TextEditingController();
@@ -28,71 +26,85 @@ class _ProductUpateState extends State<ProductUpate> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(),
-          body: Column(
-            children: [
-              SizedBox(height: 20,),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person),
-                    border: OutlineInputBorder(),
-                    hintText: "Enter Product Name",
-                  ),
-                ),
-              ), Padding(
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.currency_rupee),
-                    border: OutlineInputBorder(),
-                    hintText: "Enter Amount",
-                  ),
-                ),
-              ), Padding(
-                padding: const EdgeInsets.all(12),
-                child: TextField(
-                  controller: txtdate,
-                  decoration: InputDecoration(
-                    prefixIcon: IconButton(
-                        onPressed: () async {
-                          datepikerDilog();
-                        },
-                        icon: Icon(Icons.date_range)),
-                    border: OutlineInputBorder(),
-                    hintText: "Enter Date",
-                  ),
-                ),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Product Edit'),
+      ),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: TextField(
+              controller: txtname,
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.person),
+                border: OutlineInputBorder(),
+                hintText: "Enter Name",
               ),
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: TextField(
-                  controller: txttime,
-                  decoration: InputDecoration(
-                    prefixIcon:
-                    IconButton(onPressed: () {
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.currency_rupee),
+                border: OutlineInputBorder(),
+                hintText: "Enter Amount",
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: TextField(
+              controller: txtdate,
+              decoration: InputDecoration(
+                prefixIcon: IconButton(
+                    onPressed: () async {
+                      datepikerDilog();
+                    },
+                    icon: const Icon(Icons.date_range)),
+                border: const OutlineInputBorder(),
+                hintText: "Enter Date",
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: TextField(
+              controller: txttime,
+              decoration: InputDecoration(
+                prefixIcon: IconButton(
+                    onPressed: () {
                       timepickerdilog();
-                    }, icon: Icon(Icons.timelapse)),
-                    border: OutlineInputBorder(),
-                    hintText: "Enter Time",
-                  ),
-                ),
+                    },
+                    icon: const Icon(Icons.timelapse)),
+                border: const OutlineInputBorder(),
+                hintText: "Enter Time",
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ElevatedButton(onPressed: () {
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                  onPressed: () {
                     db.productupdateData(
-                        homeController.claint!.id!, txtname.text, txtprice.text,
-                        txtdate.text, txttime.text);
-                  }, child: Text("update")),
-                  ElevatedButton(onPressed: () {}, child: Text("delete")),
-                ],
-              ),
+                        homeController.claint!.pid!,
+                        txtname.text,
+                        txtprice.text,
+                        txtdate.text,
+                        txttime.text);
+                  },
+                  child: const Text("update")),
+              ElevatedButton(onPressed: () {}, child: const Text("delete")),
             ],
           ),
-        ));
+        ],
+      ),
+    ));
   }
 
   void datepikerDilog() async {
@@ -109,11 +121,12 @@ class _ProductUpateState extends State<ProductUpate> {
 
   void timepickerdilog() async {
     TimeOfDay? t1 =
-    await showTimePicker(context: context, initialTime: TimeOfDay.now());
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
 
     if (t1 != null) {
       DateTime parsedtime =
-      DateFormat.jm().parse(t1.format(context).toString());
+          // ignore: use_build_context_synchronously
+          DateFormat.jm().parse(t1.format(context).toString());
 
       String formetdtime = DateFormat('hh:mm').format(parsedtime);
 

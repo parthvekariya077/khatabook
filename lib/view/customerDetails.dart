@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:khatabook/controller/homeController.dart';
 import 'package:khatabook/view/db.dart';
 
@@ -23,11 +22,12 @@ class _CustomerState extends State<Customer> {
   void getData() async {
     homeController.cList.value = await dbc.readData();
   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-   getData();
+    getData();
   }
 
   @override
@@ -36,7 +36,7 @@ class _CustomerState extends State<Customer> {
         child: Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Add Customer"),
+        title: const Text("Add Customer"),
       ),
       body: Column(
         children: [
@@ -44,7 +44,7 @@ class _CustomerState extends State<Customer> {
             padding: const EdgeInsets.all(12),
             child: TextField(
               controller: txtname,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.person),
                 border: OutlineInputBorder(),
                 hintText: "Enter Name",
@@ -55,9 +55,10 @@ class _CustomerState extends State<Customer> {
             padding: const EdgeInsets.all(12),
             child: TextField(
               controller: txtnumber,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.phone_rounded),
-                  hintText: "Enter Mobile No.", border: OutlineInputBorder()),
+                  hintText: "Enter Mobile No.",
+                  border: OutlineInputBorder()),
               keyboardType: TextInputType.number,
             ),
           ),
@@ -65,23 +66,24 @@ class _CustomerState extends State<Customer> {
             padding: const EdgeInsets.all(12),
             child: TextField(
               controller: txtaddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.article_outlined),
-                  hintText: "Enter Adderss", border: OutlineInputBorder()),
+                  hintText: "Enter Adderss",
+                  border: OutlineInputBorder()),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 70,
               ),
               ElevatedButton(
                   onPressed: () {
                     Get.back();
                   },
-                  child: Text("cancel")),
-              SizedBox(
+                  child: const Text("cancel")),
+              const SizedBox(
                 width: 30,
               ),
               ElevatedButton(
@@ -91,7 +93,7 @@ class _CustomerState extends State<Customer> {
                     getData();
                     Get.back();
                   },
-                  child: Text("submit"))
+                  child: const Text("submit"))
             ],
           )
         ],

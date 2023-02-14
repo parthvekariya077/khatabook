@@ -44,18 +44,18 @@ class _MyAppState extends State<MyApp> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
           ),
-          title: Text(
+          title: const Text(
             "Khatabook",
             style: TextStyle(fontSize: 22),
           ),
           actions: [
             IconButton(
                 onPressed: () {
-                  Get.to(FilterDate());
+                  Get.to(const FilterDate());
                 },
-                icon: Icon(Icons.filter_alt))
+                icon: const Icon(Icons.filter_alt))
           ],
         ),
         body: Column(
@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
                     children: [
                       Column(
                         children: [
-                          Align(
+                          const Align(
                             alignment: Alignment.bottomRight,
                             child: Text(
                               "You Will Give",
@@ -82,7 +82,7 @@ class _MyAppState extends State<MyApp> {
                           Obx(
                             () => Text(
                               "₹ ${homeController.homepending.value}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Color(0xffca4e4a),
                                 fontSize: 40,
                               ),
@@ -95,12 +95,12 @@ class _MyAppState extends State<MyApp> {
                         child: Container(
                           height: 60,
                           width: 1,
-                          color: Color(0xff45586a),
+                          color: const Color(0xff45586a),
                         ),
                       ),
                       Column(
                         children: [
-                          Align(
+                          const Align(
                             alignment: Alignment.bottomRight,
                             child: Text(
                               "You Will Give",
@@ -110,7 +110,7 @@ class _MyAppState extends State<MyApp> {
                           Obx(
                             () => Text(
                               "₹ ${homeController.hometotal.value}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Color(0xff21e81b), fontSize: 40),
                             ),
                           ),
@@ -118,14 +118,14 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: Divider(
                       height: 1,
                       color: Color(0xff45586a),
                     ),
                   ),
-                  Text(
+                  const Text(
                     "VIEW HISTORY >",
                     style: TextStyle(fontSize: 20, color: Color(0xffffffff)),
                   )
@@ -146,7 +146,7 @@ class _MyAppState extends State<MyApp> {
                                   ["number"],
                               id: homeController.cList.value[index]["id"]
                                   .toString());
-                          Get.to(CustomerScreen());
+                          Get.to(const CustomerScreen());
                         },
                         child: ListTile(
                           leading: Text(
@@ -165,7 +165,7 @@ class _MyAppState extends State<MyApp> {
                                         "${homeController.cList[index]["id"]}");
                                     getData();
                                   },
-                                  icon: Icon(Icons.delete),
+                                  icon: const Icon(Icons.delete),
                                 ),
                                 IconButton(
                                   onPressed: () {
@@ -187,17 +187,17 @@ class _MyAppState extends State<MyApp> {
                                       children: [
                                         TextField(
                                           controller: utxtname,
-                                          decoration:
-                                              InputDecoration(hintText: "Name"),
+                                          decoration: const InputDecoration(
+                                              hintText: "Name"),
                                         ),
                                         TextField(
                                           controller: utxtnumber,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               hintText: "Number"),
                                         ),
                                         TextField(
                                           controller: utxtaddress,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                               hintText: "Adderss"),
                                         ),
                                         ElevatedButton(
@@ -210,11 +210,11 @@ class _MyAppState extends State<MyApp> {
                                               getData();
                                               Get.back();
                                             },
-                                            child: Text("update")),
+                                            child: const Text("update")),
                                       ],
                                     ));
                                   },
-                                  icon: Icon(Icons.edit),
+                                  icon: const Icon(Icons.edit),
                                 ),
                               ],
                             ),
@@ -230,13 +230,13 @@ class _MyAppState extends State<MyApp> {
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Get.to(Customer());
+            Get.to(const Customer());
           },
-          label: Text(
+          label: const Text(
             "ADD CUSTOMER",
             style: TextStyle(fontSize: 18),
           ),
-          icon: Icon(
+          icon: const Icon(
             Icons.add,
             size: 26,
           ),

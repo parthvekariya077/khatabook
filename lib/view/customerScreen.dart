@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:khatabook/modal/modal.dart';
 import 'package:khatabook/view/db.dart';
 import 'package:khatabook/view/paymentGave.dart';
 import 'package:khatabook/view/paymentGot.dart';
@@ -23,7 +24,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
 
   void getData() async {
     homeController.productList.value =
-        await dbc.productreadData(id:homeController.data!.id!);
+        await dbc.productreadData(id: homeController.data!.id!);
     homeController.addition();
   }
 
