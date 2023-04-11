@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:khatabook/modal/modal.dart';
 import 'package:khatabook/view/db.dart';
 import 'package:khatabook/view/paymentGave.dart';
 import 'package:khatabook/view/paymentGot.dart';
@@ -47,7 +45,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                 String number = 'tel:${homeController.data!.mobile}';
                 launchUrl(Uri.parse(number));
               },
-              icon: Icon(Icons.call))
+              icon: const Icon(Icons.call))
         ],
       ),
       body: Column(
@@ -55,7 +53,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
           Container(
             height: 140,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.blue,
             ),
             child: Padding(
@@ -66,7 +64,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Total Income",
                         style: TextStyle(
                             color: Color(0xffffffff),
@@ -76,7 +74,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                       Obx(
                         () => Text(
                           "₹ ${homeController.total.value}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color(0xff21e81b),
                               fontWeight: FontWeight.w400,
                               fontSize: 25),
@@ -84,13 +82,13 @@ class _CustomerScreenState extends State<CustomerScreen> {
                       ),
                     ],
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1.5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Total Expense",
                         style: TextStyle(
                             color: Color(0xffffffff),
@@ -100,7 +98,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                       Obx(
                         () => Text(
                           "₹ ${homeController.pending.value}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color(0xffca4e4a),
                               fontWeight: FontWeight.w400,
                               fontSize: 25),
@@ -117,43 +115,43 @@ class _CustomerScreenState extends State<CustomerScreen> {
             children: [
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.picture_as_pdf,
                     size: 30,
                   )),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.whatsapp,
                     size: 30,
                   )),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.message,
                     size: 30,
                   )),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.currency_rupee_sharp,
                     size: 30,
                   )),
             ],
           ),
-          Divider(
+          const Divider(
             color: Color(0xff000000),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: const [
               Padding(
-                padding: const EdgeInsets.only(left: 10),
+                padding: EdgeInsets.only(left: 10),
                 child: Text("Date/Time"),
               ),
               Text("Remark"),
               Padding(
-                padding: const EdgeInsets.only(right: 50),
+                padding: EdgeInsets.only(right: 50),
                 child: Text("YouGave/Yougot"),
               ),
             ],
@@ -169,12 +167,12 @@ class _CustomerScreenState extends State<CustomerScreen> {
                       elevation: 50,
                       child: InkWell(
                         onTap: () {
-                          Get.to(ProductUpate());
+                          Get.to(const ProductUpate());
                         },
                         child: Container(
                           height: 70,
                           width: double.infinity,
-                          color: Color(0xff676262),
+                          color: const Color(0xff676262),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
@@ -191,12 +189,12 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                         children: [
                                           Text(
                                             "${homeController.productList[index]['currentDate']}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Color(0xffffffff)),
                                           ),
                                           Text(
                                             "${homeController.productList[index]['time']}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Color(0xffb0abab)),
                                           ),
                                         ],
@@ -206,7 +204,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                       alignment: Alignment.center,
                                       child: Text(
                                         "${homeController.productList[index]['productname']}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Color(0xffffffff),
                                             fontSize: 16),
                                       ),
@@ -218,33 +216,33 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                     Container(
                                       width: 75,
                                       alignment: Alignment.center,
-                                      color: Color(0xffd90d0d),
+                                      color: const Color(0xffd90d0d),
                                       child: homeController.productList[index]
                                                   ['paymentStatus'] ==
                                               1
                                           ? Text(
                                               "${homeController.productList[index]['price']}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   color: Color(0xffffffff)),
                                             )
-                                          : Text(""),
+                                          : const Text(""),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Container(
                                       width: 75,
                                       alignment: Alignment.center,
-                                      color: Color(0xff339407),
+                                      color: const Color(0xff339407),
                                       child: homeController.productList[index]
                                                   ['paymentStatus'] ==
                                               0
                                           ? Text(
                                               "${homeController.productList[index]['price']}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   color: Color(0xffffffff)),
                                             )
-                                          : Text(""),
+                                          : const Text(""),
                                     ),
                                   ],
                                 ),
@@ -259,37 +257,35 @@ class _CustomerScreenState extends State<CustomerScreen> {
               ),
             ),
           ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                    height: 50,
-                    width: 150,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Get.to(PaymentGave());
-                        },
-                        child: Text("YOU GAVE ₹"),
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xffd90d0d)))),
-                Container(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
                   height: 50,
                   width: 150,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(PaymentGot());
-                    },
-                    child: Text("YOU GOT ₹"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff339407),
-                    ),
+                      onPressed: () {
+                        Get.to(const PaymentGave());
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xffd90d0d)),
+                      child: const Text("YOU GAVE ₹"))),
+              SizedBox(
+                height: 50,
+                width: 150,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.to(const PaymentGot());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff339407),
                   ),
+                  child: const Text("YOU GOT ₹"),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           )
         ],

@@ -5,6 +5,6 @@ import 'package:khatabook/view/homeScreen.dart';
 void main() {
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
-    routes: {'/': (context) => MyApp()},
+    routes: {'/': (context) => const MyApp()},
   ));
 }

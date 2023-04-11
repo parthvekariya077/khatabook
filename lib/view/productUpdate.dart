@@ -28,7 +28,7 @@ class _ProductUpateState extends State<ProductUpate> {
         child: Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Product Edit'),
+        title: const Text('Product Edit'),
       ),
       body: Column(
         children: [

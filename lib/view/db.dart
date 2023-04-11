@@ -1,8 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names
+
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
+// ignore: camel_case_types
 class dbClient {
   Database? db;
 
@@ -61,33 +64,42 @@ class dbClient {
     }
   }
 
-  void productinsertData(String name, String price, String date,String time ,int clientid,int status) async {
+  void productinsertData(String name, String price, String date, String time,
+      int clientid, int status) async {
     db = await productchekDatabase();
-    db!.insert("Product", {"productname": name,"price":price,"currentDate":date,"time":time,"clientID":clientid,"paymentStatus":status});
+    db!.insert("Product", {
+      "productname": name,
+      "price": price,
+      "currentDate": date,
+      "time": time,
+      "clientID": clientid,
+      "paymentStatus": status
+    });
   }
 
-  void productDelete(String id)async{
+  void productDelete(String id) async {
     db = await checkDatabase();
-    db!.delete("Product",where: "clientID = ?",whereArgs: [int.parse(id)]);
+    db!.delete("Product", where: "clientID = ?", whereArgs: [int.parse(id)]);
   }
 
   Future<List<Map>> productreadData({String? id}) async {
     db = await productchekDatabase();
     String query = "";
-    if(id!=null)
+    if (id != null) {
       query = "SELECT * FROM Product where clientID = $id";
-    else
+    } else {
       query = "SELECT * FROM Product";
-    List<Map> Product =await db!.rawQuery(query,null);
+    }
+    List<Map> Product = await db!.rawQuery(query, null);
     return Product;
   }
 
 //===================================================================//
 
-  Future<List<Map>> filterRead(String date)async{
-    db =await checkDatabase();
+  Future<List<Map>> filterRead(String date) async {
+    db = await checkDatabase();
     String query = "SELECT * FROM Product where current currentDate = ?";
-    List<Map> productList =await db!.rawQuery(query,[date]);
+    List<Map> productList = await db!.rawQuery(query, [date]);
 
     return productList;
   }
@@ -95,7 +107,8 @@ class dbClient {
   void productupdateData(
       String id, String n1, String a1, String d1, String t1) async {
     db = await checkDatabase();
-    db!.update("Product", {"name": n1, "amount": a1, "currentDate": d1, "time": t1},
+    db!.update(
+        "Product", {"name": n1, "amount": a1, "currentDate": d1, "time": t1},
         where: "id = ?", whereArgs: [int.parse(id)]);
   }
 }

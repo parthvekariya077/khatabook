@@ -1,6 +1,7 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:khatabook/modal/modal.dart';
 import 'package:khatabook/view/customerDetails.dart';
 import 'package:khatabook/view/customerScreen.dart';

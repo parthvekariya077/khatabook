@@ -1,6 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:khatabook/controller/homeController.dart';
 import 'package:khatabook/view/db.dart';
@@ -23,10 +24,12 @@ class _PaymentGaveState extends State<PaymentGave> {
   dbClient dbc = dbClient();
 
   void getData() async {
-    homeController.productList.value = await dbc.productreadData(id:homeController.data!.id!);
+    homeController.productList.value =
+        await dbc.productreadData(id: homeController.data!.id!);
     homeController.addition();
     homeController.homeAddition();
   }
+
   @override
   void initState() {
     super.initState();
@@ -38,7 +41,7 @@ class _PaymentGaveState extends State<PaymentGave> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Add Payment"),
+        title: const Text("Add Payment"),
       ),
       body: Column(
         children: [
@@ -46,7 +49,7 @@ class _PaymentGaveState extends State<PaymentGave> {
             padding: const EdgeInsets.all(12),
             child: TextField(
               controller: txtpname,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.person),
                 border: OutlineInputBorder(),
                 hintText: "Enter Product Name",
@@ -57,7 +60,7 @@ class _PaymentGaveState extends State<PaymentGave> {
             padding: const EdgeInsets.all(12),
             child: TextField(
               controller: txtprice,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.currency_rupee),
                 border: OutlineInputBorder(),
                 hintText: "Enter Price",
@@ -73,8 +76,8 @@ class _PaymentGaveState extends State<PaymentGave> {
                     onPressed: () async {
                       datepikerDilog();
                     },
-                    icon: Icon(Icons.date_range)),
-                border: OutlineInputBorder(),
+                    icon: const Icon(Icons.date_range)),
+                border: const OutlineInputBorder(),
                 hintText: "Enter Date",
               ),
             ),
@@ -84,11 +87,12 @@ class _PaymentGaveState extends State<PaymentGave> {
             child: TextField(
               controller: txttime,
               decoration: InputDecoration(
-                prefixIcon:
-                    IconButton(onPressed: () {
+                prefixIcon: IconButton(
+                    onPressed: () {
                       timepickerdilog();
-                    }, icon: Icon(Icons.timelapse)),
-                border: OutlineInputBorder(),
+                    },
+                    icon: const Icon(Icons.timelapse)),
+                border: const OutlineInputBorder(),
                 hintText: "Enter Time",
               ),
             ),
@@ -97,19 +101,19 @@ class _PaymentGaveState extends State<PaymentGave> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(15),
-                child: Container(
+                child: SizedBox(
                     height: 50,
                     width: 150,
                     child: ElevatedButton(
                       onPressed: () {
                         Get.back();
                       },
-                      child: Text("CANCEL"),
+                      child: const Text("CANCEL"),
                     )),
               ),
               Padding(
                 padding: const EdgeInsets.all(15),
-                child: Container(
+                child: SizedBox(
                     height: 50,
                     width: 150,
                     child: ElevatedButton(
@@ -120,12 +124,11 @@ class _PaymentGaveState extends State<PaymentGave> {
                             txtdate.text,
                             txttime.text,
                             int.parse(homeController.data!.id!),
-                          1
-                        );
+                            1);
                         getData();
                         Get.back();
                       },
-                      child: Text("SAVE"),
+                      child: const Text("SAVE"),
                     )),
               ),
             ],
@@ -134,6 +137,7 @@ class _PaymentGaveState extends State<PaymentGave> {
       ),
     ));
   }
+
   void datepikerDilog() async {
     var date = await showDatePicker(
         context: context,
@@ -148,11 +152,11 @@ class _PaymentGaveState extends State<PaymentGave> {
 
   void timepickerdilog() async {
     TimeOfDay? t1 =
-    await showTimePicker(context: context, initialTime: TimeOfDay.now());
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
 
     if (t1 != null) {
       DateTime parsedtime =
-      DateFormat.jm().parse(t1.format(context).toString());
+          DateFormat.jm().parse(t1.format(context).toString());
 
       String formetdtime = DateFormat('hh:mm').format(parsedtime);
 

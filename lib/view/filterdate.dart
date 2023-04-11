@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -35,13 +37,13 @@ class _FilterDateState extends State<FilterDate> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Check Pending Money"),
+        title: const Text("Check Pending Money"),
         actions: [
           IconButton(
               onPressed: () {
                 datepikerDilog();
               },
-              icon: Icon(Icons.calendar_month))
+              icon: const Icon(Icons.calendar_month))
         ],
       ),
       body: Column(
@@ -49,7 +51,7 @@ class _FilterDateState extends State<FilterDate> {
           Expanded(
             child: Obx(
               () => ListView.builder(
-                itemCount: homeController.productList.length,
+                  itemCount: homeController.productList.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(10),
@@ -58,7 +60,7 @@ class _FilterDateState extends State<FilterDate> {
                         child: Container(
                           height: 70,
                           width: double.infinity,
-                          color: Color(0xff676262),
+                          color: const Color(0xff676262),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
@@ -71,16 +73,16 @@ class _FilterDateState extends State<FilterDate> {
                                       alignment: Alignment.centerLeft,
                                       child: Column(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                         children: [
                                           Text(
                                             "${homeController.productList[index]['currentDate']}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Color(0xffffffff)),
                                           ),
                                           Text(
                                             "${homeController.productList[index]['time']}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Color(0xffb0abab)),
                                           ),
                                         ],
@@ -90,7 +92,7 @@ class _FilterDateState extends State<FilterDate> {
                                       alignment: Alignment.center,
                                       child: Text(
                                         "${homeController.productList[index]['productname']}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Color(0xffffffff),
                                             fontSize: 16),
                                       ),
@@ -102,33 +104,33 @@ class _FilterDateState extends State<FilterDate> {
                                     Container(
                                       width: 75,
                                       alignment: Alignment.center,
-                                      color: Color(0xffd90d0d),
+                                      color: const Color(0xffd90d0d),
                                       child: homeController.productList[index]
-                                      ['paymentStatus'] ==
-                                          1
+                                                  ['paymentStatus'] ==
+                                              1
                                           ? Text(
-                                        "${homeController.productList[index]['price']}",
-                                        style: TextStyle(
-                                            color: Color(0xffffffff)),
-                                      )
-                                          : Text(""),
+                                              "${homeController.productList[index]['price']}",
+                                              style: const TextStyle(
+                                                  color: Color(0xffffffff)),
+                                            )
+                                          : const Text(""),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
                                     Container(
                                       width: 75,
                                       alignment: Alignment.center,
-                                      color: Color(0xff339407),
+                                      color: const Color(0xff339407),
                                       child: homeController.productList[index]
-                                      ['paymentStatus'] ==
-                                          0
+                                                  ['paymentStatus'] ==
+                                              0
                                           ? Text(
-                                        "${homeController.productList[index]['price']}",
-                                        style: TextStyle(
-                                            color: Color(0xffffffff)),
-                                      )
-                                          : Text(""),
+                                              "${homeController.productList[index]['price']}",
+                                              style: const TextStyle(
+                                                  color: Color(0xffffffff)),
+                                            )
+                                          : const Text(""),
                                     ),
                                   ],
                                 ),
