@@ -43,101 +43,103 @@ class _PaymentGotState extends State<PaymentGot> {
       appBar: AppBar(
         title: const Text("Add Payment"),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: TextField(
-              controller: txtpname,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                border: OutlineInputBorder(),
-                hintText: "Enter Product Name",
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: TextField(
+                controller: txtpname,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  border: OutlineInputBorder(),
+                  hintText: "Enter Product Name",
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: TextField(
-              controller: txtprice,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.currency_rupee),
-                border: OutlineInputBorder(),
-                hintText: "Enter Price",
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: TextField(
+                controller: txtprice,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.currency_rupee),
+                  border: OutlineInputBorder(),
+                  hintText: "Enter Price",
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: TextField(
-              controller: txtdate,
-              decoration: InputDecoration(
-                prefixIcon: IconButton(
-                  onPressed: () async {
-                    datepikerDilog();
-                  },
-                  icon: const Icon(
-                    Icons.calendar_month,
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: TextField(
+                controller: txtdate,
+                decoration: InputDecoration(
+                  prefixIcon: IconButton(
+                    onPressed: () async {
+                      datepikerDilog();
+                    },
+                    icon: const Icon(
+                      Icons.calendar_month,
+                    ),
                   ),
+                  border: const OutlineInputBorder(),
+                  hintText: "Enter Date",
                 ),
-                border: const OutlineInputBorder(),
-                hintText: "Enter Date",
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: TextField(
-              controller: txttime,
-              decoration: InputDecoration(
-                prefixIcon: IconButton(
-                  onPressed: () {
-                    timepickerdilog();
-                  },
-                  icon: const Icon(Icons.timelapse),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: TextField(
+                controller: txttime,
+                decoration: InputDecoration(
+                  prefixIcon: IconButton(
+                    onPressed: () {
+                      timepickerdilog();
+                    },
+                    icon: const Icon(Icons.timelapse),
+                  ),
+                  border: const OutlineInputBorder(),
+                  hintText: "Enter Time",
                 ),
-                border: const OutlineInputBorder(),
-                hintText: "Enter Time",
               ),
             ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: SizedBox(
-                    height: 50,
-                    width: 150,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: const Text("CANCEL"),
-                    )),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: SizedBox(
-                    height: 50,
-                    width: 150,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        dbc.productinsertData(
-                            txtpname.text,
-                            txtprice.text,
-                            txtdate.text,
-                            txttime.text,
-                            int.parse(homeController.data!.id!),
-                            0);
-                        getData();
-                        Get.back();
-                      },
-                      child: const Text("SAVE"),
-                    )),
-              ),
-            ],
-          )
-        ],
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: SizedBox(
+                      height: 50,
+                      width: 150,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        child: const Text("CANCEL"),
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: SizedBox(
+                      height: 50,
+                      width: 150,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          dbc.productinsertData(
+                              txtpname.text,
+                              txtprice.text,
+                              txtdate.text,
+                              txttime.text,
+                              int.parse(homeController.data!.id!),
+                              0);
+                          getData();
+                          Get.back();
+                        },
+                        child: const Text("SAVE"),
+                      )),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     ));
   }

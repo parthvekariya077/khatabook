@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:khatabook/view/db.dart';
 import 'package:khatabook/view/paymentGave.dart';
 import 'package:khatabook/view/paymentGot.dart';
-import 'package:khatabook/view/productUpdate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../controller/homeController.dart';
@@ -122,7 +121,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
               IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    Icons.whatsapp,
+                    Icons.mark_as_unread_sharp,
                     size: 30,
                   )),
               IconButton(
@@ -142,9 +141,9 @@ class _CustomerScreenState extends State<CustomerScreen> {
           const Divider(
             color: Color(0xff000000),
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Padding(
                 padding: EdgeInsets.only(left: 10),
                 child: Text("Date/Time"),
@@ -164,11 +163,9 @@ class _CustomerScreenState extends State<CustomerScreen> {
                   return Padding(
                     padding: const EdgeInsets.all(10),
                     child: Card(
-                      elevation: 50,
+                      elevation: 10,
                       child: InkWell(
-                        onTap: () {
-                          Get.to(const ProductUpate());
-                        },
+                        onTap: () {},
                         child: Container(
                           height: 70,
                           width: double.infinity,
@@ -200,14 +197,12 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                         ],
                                       ),
                                     ),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        "${homeController.productList[index]['productname']}",
-                                        style: const TextStyle(
-                                            color: Color(0xffffffff),
-                                            fontSize: 16),
-                                      ),
+                                    Text(
+                                      "${homeController.productList[index]['productname']}",
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          color: Color(0xffffffff),
+                                          fontSize: 16),
                                     ),
                                   ],
                                 ),
