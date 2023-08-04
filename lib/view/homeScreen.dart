@@ -127,9 +127,12 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                   const Text(
-                    "VIEW HISTORY >",
-                    style: TextStyle(fontSize: 20, color: Color(0xffffffff)),
-                  )
+                    "client",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color(0xffffffff),
+                    ),
+                  ),
                 ],
               ),
             ),

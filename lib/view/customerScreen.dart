@@ -18,7 +18,6 @@ class _CustomerScreenState extends State<CustomerScreen> {
   HomeController homeController = Get.put(HomeController());
 
   dbClient dbc = dbClient();
-
   void getData() async {
     homeController.productList.value =
         await dbc.productreadData(id: homeController.data!.id!);
